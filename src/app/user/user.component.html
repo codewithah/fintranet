@@ -1,0 +1,36 @@
+<div class="grid p-fluid mt-5">
+  <div class="field col-12">
+
+  <ng-template [ngIf]="selectedUser && message ">
+  <p-message severity="info" text="{{message}}"></p-message>
+  </ng-template>
+
+
+  <div class="mt-5">
+    <p-table [value]="users" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Number</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-users let-rowIndex="rowIndex">
+        <tr (click)="onSelectUser(rowIndex);">
+          <td>{{rowIndex + 1}}</td>
+          <td>{{users['firstname']}}</td>
+          <td>{{users['lastname']}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+  <div class="field col-6 md:col-2">
+    <p-button label="Previously" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}" (onClick)="onPrev()"></p-button>
+  </div>
+  <div class="field col-6 md:col-2">
+    <p-button label="Next" icon="pi pi-check" (onClick)="onNext()" [disabled]="!selectedUser"></p-button>
+  </div>
+
+</div>

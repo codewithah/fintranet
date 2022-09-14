@@ -1,4 +1,4 @@
-export interface Status{
-  name: string;
-  code: string;
+export interface User{
+  firstname: string;
+  lastname: string;
 }

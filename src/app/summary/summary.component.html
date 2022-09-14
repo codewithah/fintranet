@@ -1,0 +1,16 @@
+<div class="pt-5">
+  <p-card header="{{user.firstname}} {{user.lastname}}" [style]="{width: '100%', maxWidth: '500px'}"
+          styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <img alt="Card" [src]=image>
+    </ng-template>
+    <p><strong>amount: {{payment.amount}}</strong></p>
+    <p><strong>date: {{payment.date | date:'short'}}</strong></p>
+    <p><strong>status: {{payment.status}}</strong></p>
+    <p><strong>source: {{payment.source}}</strong></p>
+    <ng-template pTemplate="footer">
+      <p-button label="Previously" icon="pi pi-times" styleClass="p-button-secondary m-0"
+                [style]="{'margin-left': '.5em'}" (onClick)="onPrev()"></p-button>
+    </ng-template>
+  </p-card>
+</div>

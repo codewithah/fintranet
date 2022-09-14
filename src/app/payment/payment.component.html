@@ -1,0 +1,41 @@
+<div class="grid p-fluid mt-5">
+  <div class="field col-12 md:col-12">
+    <label for="amount" class="block">Amount</label>
+    <input id="amount" type="text" pInputText [(ngModel)]="amount" pattern="[0-9]*" placeholder="Amount"
+           #_amount="ngModel" [required]="true">
+    <strong *ngIf="_amount.invalid && (_amount.dirty || _amount.touched)">
+      <small *ngIf="_amount.errors?.['required']" id="amount-help" class="p-error block">Amount is required.</small>
+    </strong>
+  </div>
+
+  <div class="field col-12 md:col-12">
+    <label for="date" class="block">Date</label>
+    <p-calendar id="date" [(ngModel)]="currentDate" [minDate]="currentDate" [maxDate]="maxDate" #_date="ngModel"
+                [required]="true"></p-calendar>
+    <strong *ngIf="_date.invalid && (_date.dirty || _date.touched)">
+      <small *ngIf="_date.errors?.['required']" id="date-help" class="p-error block">Date is required.</small>
+    </strong>
+  </div>
+  <div class="field col-12 md:col-12">
+    <label for="status" class="block">status</label>
+    <p-dropdown id="Status" [options]="statuses" [(ngModel)]="selectedStatus" optionLabel="name" optionValue="code"
+                #_status="ngModel" [required]="true"></p-dropdown>
+  </div>
+  <div class="field col-12 md:col-12">
+    <label for="source" class="block">Source of fund</label>
+    <input id="source" type="text" pInputText [(ngModel)]="source" pattern="[a-zA-Z ]*" placeholder="Source of fund"
+           #_source="ngModel" [required]="true">
+    <strong *ngIf="_source.invalid && (_source.dirty || _source.touched)">
+      <small *ngIf="_source.errors?.['required']" id="source-help" class="p-error block">Source of fund is
+        required.</small>
+    </strong>
+  </div>
+  <div class="field col-6 md:col-2">
+    <p-button label="Previously" icon="pi pi-times" styleClass="p-button-secondary m-0"
+              [style]="{'margin-left': '.5em'}" (onClick)="onPrev()"></p-button>
+  </div>
+  <div class="field col-6 md:col-2">
+    <p-button label="Next" icon="pi pi-check" (onClick)="onNext()"
+              [disabled]="(!amount  || !currentDate || !source) "></p-button>
+  </div>
+</div>
